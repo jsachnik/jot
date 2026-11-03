@@ -1,6 +1,6 @@
 /* Startup, tabs and theme. */
 
-const VIEWS = { home: HomeView, map: MapView, timeline: TimelineView, settings: SettingsView };
+const VIEWS = { home: HomeView, map: MapView, timeline: TimelineView, stickers: StickersView, settings: SettingsView };
 
 function setTheme(mode, palette) {
   if (mode) localStorage.setItem('jot.mode', mode);

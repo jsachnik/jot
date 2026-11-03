@@ -28,13 +28,26 @@ optional extra.
   groups they're in, whether it should be a new Jot, and highlights them in blue on the
   map or the timeline.
 - **Timeline.** Everything you've done, newest first, filterable by group and type.
+- **Stickers.** Spend points on a surprise sticker. It is built from a chain of weighted rolls: a noun
+  category, then a specific noun (everyday ones like *dog* are common, outlandish ones are rare), then usually one
+  adjective (sometimes two, almost never three): a colour, a size/age word, a look, or "in the style of" a painter,
+  and sometimes a verb that suits it. Very rarely it comes out **puffy**, **holographic** (it shimmers as you move
+  the pointer over it), or damaged, and once in 100,000 it has been **torn right off**, leaving only glue and
+  scraps. The odds of all the rolls add up to a net rarity: common, uncommon, rare, legendary or mythical.
+  Pick ideas first and the sticker leans toward things related to them. With the TAMU AI connected (and Pillow installed) the sticker is made in three image steps: the AI draws the subject, turns it into a
+  die-cut sticker with the rolled look, colour, painter and verb, then redraws that as a glossy emoji (about 10-15 seconds, `stickerimage.py`;
+  set `JOT_IMAGE_STICKERS=off` in `.env` to disable, `JOT_IMAGE_MODEL` to change the model). With another AI it draws an SVG sticker;
+  with no AI (or with *Let the AI draw it* unticked) you get a plain clipart sticker, like a *Cat Sticker* or a *Blue Cat Sticker*, drawn with the bundled
+  Noto Emoji artwork (Apache-2.0, see `sticker_banks/NOTO_EMOJI_LICENSE.txt`). Each picture is its own thing (no two nouns share one), a colour word is sometimes added and recolours it, everyday pictures are common and odd ones rare, it can still come out puffy, holographic or
+  damaged, new rolls lean toward pictures you don't have yet, and the sticker book counts how many pictures you've collected. The sticker book sorts by rarity, newest, oldest, A to Z, colour or category, and filters
+  by rarity, quality (holographic, puffy, damaged...) and name.
 - **Themes.** Light, dark or automatic, plus six colour themes.
 
 ## Install and run
 
 You need Python 3.10 or newer ([python.org](https://www.python.org/downloads/); on
 Windows tick *Add python.exe to PATH*).
-The first run installs its one small dependency (Flask) into a private `.venv` folder next to Jot; nothing else on your computer is touched.
+The first run installs its two small dependencies (Flask, and Pillow for AI image stickers) into a private `.venv` folder next to Jot; nothing else on your computer is touched.
 
 - **Windows:** double-click `run.bat`. The first time it sets itself up (a minute).
 - **Mac / Linux:** `./run.sh`
@@ -45,9 +58,9 @@ Jot; close it to stop.
 ## Adding an AI (optional)
 
 Without one, Jot uses guided brainstorming prompts, keyword matching for the
-librarian and suggested connections. With one, you get
+librarian and suggested connections, and generated stickers. With one, you get
 questions written for each of your ideas, a librarian that understands meaning,
-and AI-suggested connections.
+AI-suggested connections, and AI-drawn stickers.
 
 1. Copy `.env.example` to `.env`.
 2. Set `JOT_PROVIDER` to `tamu`, `openai`, `openrouter`, `ollama` or `custom`
@@ -66,18 +79,25 @@ Everything is plain files; no build step.
 |---|---|
 | Button and tab labels, status names, theme list | `static/config.js` |
 | Colours, spacing, add a theme | `static/style.css` (look for `data-palette`) |
-| Point values | `config.py` |
+| Point values and sticker price | `config.py` |
 | The questions asked without an AI | `questions.py` |
+| Sticker odds (adjective counts and types, puffy, holographic, damage, tier shares) | `config.py` (`STICKER`) |
+| Sticker adjectives (20 colours, modifiers, looks, painters) and how common each is | `sticker_banks/traits.json` (higher `weight` = more common) |
+| Sticker nouns, and how everyday each one is | `sticker_banks/bank.json` and `ratings.json`; rebuild with `python tools/make_sticker_banks.py` then `python tools/rate_banks.py` and `python tools/map_emoji.py` (need an AI) |
+| Image sticker steps and prompts | `stickerimage.py` |
+| Plain clipart stickers (no AI) | `stickerclipart.py`; rebuild the artwork pack with `tools/build_emoji_art.py` |
+| See every rare effect side by side | `python tools/sticker_preview.py preview.html` |
 | What the AI is told to do | `prompts.py` |
 | Where data is stored, port | `.env` (`JOT_DATA`, `JOT_PORT`) |
 
 Layout: `app.py` (server and API), `db.py` (database), `llm.py` (AI client),
-`textsim.py` (offline matching), and `static/*.js` (one file per screen).
+`textsim.py` (offline matching), `stickers.py`, and `static/*.js` (one file per screen).
 
 ## Your data
 
-Settings → *Download a backup* saves everything (ideas, notes, files, points) as one zip; *Restore* loads it back. Or copy the `jot_data` folder.
+Settings → *Download a backup* saves everything (ideas, notes, files, points,
+stickers) as one zip; *Restore* loads it back. Or copy the `jot_data` folder.
 
 ## License
 
-MIT. See `LICENSE`.
+See `LICENSE`. The plain clipart stickers use Noto Emoji artwork from Google, which is Apache-2.0 (`sticker_banks/NOTO_EMOJI_LICENSE.txt`).

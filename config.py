@@ -32,7 +32,33 @@ POINTS = {
     "ai_depth_per_level": 2,      # AI rates depth 1-5 -> up to +8
     "update_base": 20,            # closing the loop on an idea
     "update_section": 5,          # per section (went well / poorly / improve) filled
+    "sticker_cost": 100,          # price of one sticker
 }
 
 # Ideas can be in these states. "open" is the default.
 STATUSES = ("open", "worked", "partial", "failed", "shelved")
+
+# --- sticker rolls ----------------------------------------------------------
+# A sticker is built from a chain of rolls (see stickerbank.py):
+#   noun category -> the specific noun -> how many adjectives -> each adjective's type and which one
+#   -> maybe a verb -> maybe puffy / holographic / damage.
+# Every roll is weighted, and the "surprise" of the outcomes adds up to a net rarity.
+STICKER = {
+    # how many adjectives (1 almost always, 3 near impossible)
+    "adjective_counts": [0.92, 0.075, 0.005],
+    # what kind each adjective is: color, modifier, look, style-of
+    "adjective_types": {"color": 0.40, "modifier": 0.35, "look": 0.15, "style_of": 0.10},
+    "verb": 0.25,
+    # extras, all very rare
+    "puffy": 0.005,
+    "holographic": 0.004,
+    "damage": {"scuffed": 0.003, "ripped": 0.0015, "shredded": 0.0005},   # chance of each tier
+    "torn_off": 0.00001,       # the first roll: 0.001% the sticker has been torn right off
+    # how common is a noun, from the AI's 1-5 familiarity rating (5 = everyday, 1 = outlandish)
+    "familiarity_weight": {5: 100, 4: 50, 3: 20, 2: 6, 1: 1},
+    "idea_bias": 0.6,          # chance a sticker made from chosen ideas picks something related to them
+    # share of stickers in each rarity tier (common is whatever is left over)
+    "tier_shares": {"uncommon": 0.22, "rare": 0.09, "legendary": 0.035, "mythical": 0.005},
+}
+DAMAGE_NAMES = ["Scuffed", "Ripped", "Shredded", "Torn-Off"]
+TIERS = ["COMMON", "UNCOMMON", "RARE", "LEGENDARY", "MYTHICAL"]

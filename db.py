@@ -71,6 +71,10 @@ CREATE TABLE IF NOT EXISTS events(
   detail TEXT NOT NULL DEFAULT '',
   created_at TEXT
 );
+CREATE TABLE IF NOT EXISTS stickers(
+  id INTEGER PRIMARY KEY,
+  name TEXT, svg TEXT NOT NULL, idea_ids TEXT, source TEXT, created_at TEXT
+);
 CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY, value TEXT);
 CREATE INDEX IF NOT EXISTS ix_events_idea ON events(idea_id);
 CREATE INDEX IF NOT EXISTS ix_links_s ON links(source);
@@ -100,6 +104,10 @@ def init():
     conn = connect()
     conn.execute("PRAGMA journal_mode=WAL")
     conn.executescript(SCHEMA)
+    cols = {r["name"] for r in conn.execute("PRAGMA table_info(stickers)")}
+    for col in ("recipe", "rarity"):                 # added after the first release
+        if col not in cols:
+            conn.execute(f"ALTER TABLE stickers ADD COLUMN {col} TEXT")
     if not conn.execute("SELECT 1 FROM groups LIMIT 1").fetchone():
         for i, (name, parent, color) in enumerate(DEFAULT_GROUPS):
             conn.execute("INSERT INTO groups(name,parent_id,color,sort,created_at) VALUES(?,?,?,?,?)",

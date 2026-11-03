@@ -1,7 +1,7 @@
 /* Words and options shown in the interface. Change anything here to make Jot yours. */
 const CONFIG = {
   appName: 'Jot',
-  tabs: [['home', 'Home'], ['map', 'Map'], ['timeline', 'Timeline'], ['settings', 'Settings']],
+  tabs: [['home', 'Home'], ['map', 'Map'], ['timeline', 'Timeline'], ['stickers', 'Stickers'], ['settings', 'Settings']],
   labels: {
     jotButton: 'Jot It Down',
     updateTitle: 'Give an Update',

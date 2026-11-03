@@ -51,7 +51,7 @@ const SettingsView = {
     const ai = S.data.ai, on = ai.configured && ai.enabled;
     const out = h('span', { class: 'small' });
     return h('section', { class: 'card', style: { marginBottom: '18px' } }, h('h2', {}, 'AI features'),
-      h('p', {}, ai.configured ? h('span', {}, 'Connected to ', h('b', {}, ai.label), '.') : 'Running in offline mode. Everything works except AI-written questions, AI librarian answers, AI connections; Jot uses guided prompts and keyword matching instead.'),
+      h('p', {}, ai.configured ? h('span', {}, 'Connected to ', h('b', {}, ai.label), '.') : 'Running in offline mode. Everything works except AI-written questions, AI librarian answers, AI connections and AI-drawn stickers; Jot uses guided prompts and keyword matching instead.'),
       ai.configured ? h('label', { class: 'row' }, h('input', { type: 'checkbox', checked: ai.enabled, onchange: async (e) => { await attempt(() => api('/api/settings', 'POST', { use_ai: e.target.checked })); await refresh(); this.refresh(); } }), 'Use AI features') : null,
       ai.configured ? h('div', { class: 'row', style: { marginTop: '8px' } }, h('button', { class: 'btn', onclick: async () => { out.textContent = 'Testing…'; const r = await api('/api/llm/test', 'POST', {}); out.textContent = r.ok ? `✔ Working (${r.label})` : `✖ ${r.error}`; } }, 'Test connection'), out) : null,
       !ai.configured ? h('p', { class: 'muted small' }, 'To connect one: copy ".env.example" to ".env", set JOT_PROVIDER, restart Jot. Details in the README. ', ai.reason || '') : null);

@@ -20,3 +20,8 @@ List at most 8 matches, best first. "new" = nothing relevant, "covered" = an exi
 CONNECT_SYSTEM = """You help someone see how their ideas relate. Given one idea and a catalog of their other ideas
 (id | title | snippet), choose up to 5 that genuinely relate (same problem, shared method, one builds on another, or a contrast).
 Reply with ONLY JSON: {"links": [{"id": <catalog id>, "why": "<one short sentence>"}]}"""
+
+STICKER_SYSTEM = """You design collectible stickers. Draw ONE sticker as a single self-contained SVG, viewBox="0 0 200 200".
+Style: bold flat shapes, a thick white outline around the whole sticker silhouette, 3-6 colours, playful and iconic.
+Inspired by the ideas given. No text, no <script>, no <image>, no external links, no gradients that reference URLs.
+Reply with ONLY JSON: {"name": "<2-4 word sticker name>", "svg": "<svg ...>...</svg>"}"""

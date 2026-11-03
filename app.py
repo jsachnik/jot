@@ -16,7 +16,7 @@ import webbrowser
 import zipfile
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template, request, send_file, send_from_directory
+from flask import Flask, abort, jsonify, render_template, request, send_file, send_from_directory
 from werkzeug.utils import secure_filename
 
 import config
@@ -24,6 +24,10 @@ import db
 import llm
 import prompts
 import questions
+import stickerbank
+import stickerclipart
+import stickerimage
+import stickers
 import textsim
 
 app = Flask(__name__)
@@ -151,6 +155,18 @@ def files(name):
     return resp
 
 
+@app.route("/stickers/<int:sid>.svg")
+def sticker_svg(sid):
+    conn = conn_()
+    row = conn.execute("SELECT svg FROM stickers WHERE id=?", (sid,)).fetchone()
+    conn.close()
+    if not row:
+        abort(404)
+    resp = app.response_class(row["svg"], mimetype="image/svg+xml")
+    resp.headers["Content-Security-Policy"] = "default-src 'none'; img-src data:; style-src 'unsafe-inline'; sandbox"
+    return resp
+
+
 # --- bootstrap data ---------------------------------------------------------
 
 @app.route("/api/all")
@@ -179,7 +195,7 @@ def api_all():
         "suggested": build_index(conn)[1],
         "points": db.total_points(conn),
         "ai": dict(llm.describe(), enabled=db.get_setting(conn, "use_ai", "1") != "0"),
-        "costs": {"jot": P["jot"]},
+        "costs": {"sticker": P["sticker_cost"], "jot": P["jot"]},
     }
     conn.close()
     return jsonify(out)
@@ -674,6 +690,87 @@ def events():
     return jsonify(out)
 
 
+# --- stickers ---------------------------------------------------------------
+
+@app.route("/api/stickers", methods=["GET", "POST"])
+def stickers_api():
+    conn = conn_()
+    if request.method == "GET":
+        out = rows(conn, "SELECT id, name, idea_ids, source, created_at, recipe, rarity FROM stickers ORDER BY id DESC")
+        for s in out:
+            s["idea_ids"] = json.loads(s["idea_ids"] or "[]")
+            s["recipe"] = json.loads(s["recipe"]) if s["recipe"] else None
+            s["rarity"] = s["rarity"] or ""
+        conn.close()
+        return jsonify(out)
+
+    d = request.get_json(force=True)
+    cost = P["sticker_cost"]
+    if db.total_points(conn) < cost:
+        conn.close()
+        return err(f"A sticker costs {cost} points. Keep jotting and brainstorming!", 402)
+    ids = [int(i) for i in d.get("idea_ids") or [] if str(i).isdigit()]
+    allideas = {r["id"]: r for r in rows(conn, "SELECT id, title, body FROM ideas")}
+    ids = [i for i in ids if i in allideas][:6]
+    # Chosen ideas nudge what the sticker is about; "surprise me" (no ideas) is purely random.
+    hint = " ".join(f"{allideas[i]['title']} {allideas[i]['body'][:300]}" for i in ids)
+    use_ai = ai_ready(conn) and d.get("use_ai", True)
+    recipe = None
+    if not use_ai:      # no AI: a plain clipart sticker ("Cat Sticker"), leaning toward pictures you don't have yet
+        owned = stickerclipart.owned_keys([json.loads(r["recipe"]) for r in rows(conn, "SELECT recipe FROM stickers WHERE recipe IS NOT NULL")])
+        recipe = stickerclipart.roll(hint, owned=owned)
+    clipart = bool(recipe)
+    recipe = recipe or stickerbank.roll(hint)
+    svg, source, name, rarity = None, "generated", None, ""
+    if recipe:
+        art = None
+        if use_ai and stickerimage.available():     # AI image stickers (draw -> sticker -> emoji); None falls through to the SVG way
+            art = stickerimage.make(recipe)
+        if use_ai and not art:
+            for _attempt in range(2):       # the AI sometimes returns broken SVG; one retry before falling back to an emoji sticker
+                try:
+                    data = llm.chat_json([{"role": "system", "content": prompts.STICKER_SYSTEM},
+                                          {"role": "user", "content": "Ideas:\n- " + stickerbank.art_prompt(recipe) + "\nUseful colours: "
+                                           + (recipe["color"]["hex"] if recipe.get("color") else "your choice")}], timeout=150)
+                    art = stickers.clean_svg(str(data.get("svg") or ""))
+                except Exception:  # noqa: BLE001
+                    art = None
+                if art:
+                    break
+        source = "ai" if art else "generated"
+        svg = stickerbank.render(recipe, art or stickerclipart.art(recipe))
+        name = stickerclipart.name(recipe) if clipart else stickerbank.full_name(recipe)
+        rarity = stickerbank.rarity_label(recipe)
+    else:   # word banks missing: the old generic sticker
+        name, svg = stickers.procedural(" | ".join(allideas[i]["title"] for i in ids) + uuid.uuid4().hex[:6], [])
+    cur = conn.execute("INSERT INTO stickers(name,svg,idea_ids,source,created_at,recipe,rarity) VALUES(?,?,?,?,?,?,?)",
+                       (name, svg, json.dumps(ids), source, db.now(), json.dumps(recipe) if recipe else None, rarity))
+    db.add_points(conn, -cost, "Minted a sticker")
+    db.add_event(conn, "sticker", None, name)
+    conn.commit()
+    out = {"id": cur.lastrowid, "name": name, "source": source, "rarity": rarity, "recipe": recipe,
+           "idea_ids": ids, "total": db.total_points(conn)}
+    conn.close()
+    return jsonify(out)
+
+
+@app.route("/api/stickers/collection")
+def stickers_collection():
+    conn = conn_()
+    recipes = [json.loads(r["recipe"]) for r in rows(conn, "SELECT recipe FROM stickers WHERE recipe IS NOT NULL")]
+    conn.close()
+    return jsonify({"owned": len(stickerclipart.owned_keys(recipes)), "total": stickerclipart.total()})
+
+
+@app.route("/api/stickers/<int:sid>", methods=["DELETE"])
+def sticker_delete(sid):
+    conn = conn_()
+    conn.execute("DELETE FROM stickers WHERE id=?", (sid,))
+    conn.commit()
+    conn.close()
+    return jsonify({"ok": True})
+
+
 # --- settings, AI test, backup ----------------------------------------------
 
 @app.route("/api/settings", methods=["POST"])
@@ -696,7 +793,7 @@ def llm_test():
         return jsonify({"ok": False, "error": str(exc)[:300]})
 
 
-TABLES = ["groups", "ideas", "idea_groups", "links", "updates", "attachments", "brainstorm", "points", "events", "settings"]
+TABLES = ["groups", "ideas", "idea_groups", "links", "updates", "attachments", "brainstorm", "points", "events", "stickers", "settings"]
 
 
 @app.route("/api/export")

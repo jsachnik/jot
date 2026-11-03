@@ -1,0 +1,794 @@
+[
+ {
+  "name": "bubblegum",
+  "hex": "#FF85A1"
+ },
+ {
+  "name": "tangerine dream",
+  "hex": "#FF8C42"
+ },
+ {
+  "name": "cherry blossom",
+  "hex": "#FFB7C5"
+ },
+ {
+  "name": "lava burst",
+  "hex": "#CF1020"
+ },
+ {
+  "name": "peach fuzz",
+  "hex": "#FFCBA4"
+ },
+ {
+  "name": "strawberry milk",
+  "hex": "#FFDDE1"
+ },
+ {
+  "name": "neon flamingo",
+  "hex": "#FF6FA8"
+ },
+ {
+  "name": "burnt sienna",
+  "hex": "#C45229"
+ },
+ {
+  "name": "candied yam",
+  "hex": "#E8751A"
+ },
+ {
+  "name": "rose quartz",
+  "hex": "#F7CAC9"
+ },
+ {
+  "name": "fire engine",
+  "hex": "#CE2939"
+ },
+ {
+  "name": "creamsicle",
+  "hex": "#FFAA5C"
+ },
+ {
+  "name": "hot magenta",
+  "hex": "#FF0099"
+ },
+ {
+  "name": "sunflower",
+  "hex": "#FFC300"
+ },
+ {
+  "name": "dragon fruit",
+  "hex": "#FF4D6D"
+ },
+ {
+  "name": "pumpkin spice",
+  "hex": "#D2671E"
+ },
+ {
+  "name": "baby pink",
+  "hex": "#F4C2C2"
+ },
+ {
+  "name": "mango tango",
+  "hex": "#FF6B35"
+ },
+ {
+  "name": "dusty rose",
+  "hex": "#C08080"
+ },
+ {
+  "name": "golden hour",
+  "hex": "#FFB347"
+ },
+ {
+  "name": "watermelon sugar",
+  "hex": "#FC6C85"
+ },
+ {
+  "name": "persimmon",
+  "hex": "#EC5800"
+ },
+ {
+  "name": "blush wine",
+  "hex": "#D4768A"
+ },
+ {
+  "name": "lemon drop",
+  "hex": "#FFF44F"
+ },
+ {
+  "name": "ruby slipper",
+  "hex": "#9B111E"
+ },
+ {
+  "name": "cotton candy",
+  "hex": "#FFB3D9"
+ },
+ {
+  "name": "tiger lily",
+  "hex": "#FF6347"
+ },
+ {
+  "name": "champagne",
+  "hex": "#F7E7CE"
+ },
+ {
+  "name": "coral reef",
+  "hex": "#FF6F61"
+ },
+ {
+  "name": "maraschino",
+  "hex": "#FF2400"
+ },
+ {
+  "name": "peach sorbet",
+  "hex": "#FFBE98"
+ },
+ {
+  "name": "hot coral",
+  "hex": "#FF4F4B"
+ },
+ {
+  "name": "golden rod",
+  "hex": "#DAA520"
+ },
+ {
+  "name": "pink lemonade",
+  "hex": "#FFB3BA"
+ },
+ {
+  "name": "papaya whip",
+  "hex": "#FFEFD5"
+ },
+ {
+  "name": "deep carmine",
+  "hex": "#A9203E"
+ },
+ {
+  "name": "apricot jam",
+  "hex": "#FFA560"
+ },
+ {
+  "name": "neon sunrise",
+  "hex": "#FF6E27"
+ },
+ {
+  "name": "cherry cola",
+  "hex": "#7B1734"
+ },
+ {
+  "name": "honey pot",
+  "hex": "#FFC85C"
+ },
+ {
+  "name": "hot pink punk",
+  "hex": "#FF0066"
+ },
+ {
+  "name": "tuscan sunset",
+  "hex": "#CF6F4D"
+ },
+ {
+  "name": "rose gold",
+  "hex": "#B76E79"
+ },
+ {
+  "name": "saffron",
+  "hex": "#F4C430"
+ },
+ {
+  "name": "raspberry sorbet",
+  "hex": "#E3256B"
+ },
+ {
+  "name": "amber glow",
+  "hex": "#FFBE00"
+ },
+ {
+  "name": "flamingo kiss",
+  "hex": "#FC8EAC"
+ },
+ {
+  "name": "blood orange",
+  "hex": "#CC3300"
+ },
+ {
+  "name": "vanilla cream",
+  "hex": "#FFF3B0"
+ },
+ {
+  "name": "strawberry jam",
+  "hex": "#C0392B"
+ },
+ {
+  "name": "sherbet push pop",
+  "hex": "#FF9966"
+ },
+ {
+  "name": "pale dogwood",
+  "hex": "#EDADA8"
+ },
+ {
+  "name": "inferno",
+  "hex": "#B30000"
+ },
+ {
+  "name": "gummy bear pink",
+  "hex": "#FF80AB"
+ },
+ {
+  "name": "solar flare",
+  "hex": "#FF4500"
+ },
+ {
+  "name": "candyfloss",
+  "hex": "#FFBCD9"
+ },
+ {
+  "name": "autumn ember",
+  "hex": "#C0562B"
+ },
+ {
+  "name": "blushing peony",
+  "hex": "#F2647A"
+ },
+ {
+  "name": "marigold",
+  "hex": "#EAA221"
+ },
+ {
+  "name": "neon peach",
+  "hex": "#FF9F80"
+ },
+ {
+  "name": "carnation",
+  "hex": "#FF7FA0"
+ },
+ {
+  "name": "clementine",
+  "hex": "#E8722A"
+ },
+ {
+  "name": "deep blush",
+  "hex": "#E5646E"
+ },
+ {
+  "name": "butterscotch",
+  "hex": "#E3963E"
+ },
+ {
+  "name": "lipstick red",
+  "hex": "#C0204F"
+ },
+ {
+  "name": "melon fizz",
+  "hex": "#FD8F7C"
+ },
+ {
+  "name": "amaranth",
+  "hex": "#E52B50"
+ },
+ {
+  "name": "citrus zest",
+  "hex": "#F5A623"
+ },
+ {
+  "name": "petal pink",
+  "hex": "#FFD1DC"
+ },
+ {
+  "name": "wildfire",
+  "hex": "#FF3800"
+ },
+ {
+  "name": "frog belly green",
+  "hex": "#6ABF69"
+ },
+ {
+  "name": "midnight blueberry",
+  "hex": "#1A1A6E"
+ },
+ {
+  "name": "minty fresh",
+  "hex": "#A8E6CF"
+ },
+ {
+  "name": "deep sea kraken",
+  "hex": "#003049"
+ },
+ {
+  "name": "bubblegum violet",
+  "hex": "#C77DFF"
+ },
+ {
+  "name": "enchanted forest",
+  "hex": "#2D6A4F"
+ },
+ {
+  "name": "glacier melt",
+  "hex": "#CAF0F8"
+ },
+ {
+  "name": "witch hat purple",
+  "hex": "#4A0E8F"
+ },
+ {
+  "name": "sea glass",
+  "hex": "#78C8A4"
+ },
+ {
+  "name": "velvet plum",
+  "hex": "#6B2D5E"
+ },
+ {
+  "name": "alien moss",
+  "hex": "#7FBA00"
+ },
+ {
+  "name": "fairy tale blue",
+  "hex": "#7EC8E3"
+ },
+ {
+  "name": "jungle canopy",
+  "hex": "#1B5E20"
+ },
+ {
+  "name": "dreamy lavender",
+  "hex": "#C3B1E1"
+ },
+ {
+  "name": "neon spearmint",
+  "hex": "#39FF8F"
+ },
+ {
+  "name": "ocean abyss",
+  "hex": "#001F5B"
+ },
+ {
+  "name": "cotton candy sky",
+  "hex": "#AED9E0"
+ },
+ {
+  "name": "bruised grape",
+  "hex": "#4B2E6B"
+ },
+ {
+  "name": "shamrock shake",
+  "hex": "#38A169"
+ },
+ {
+  "name": "sapphire dusk",
+  "hex": "#2C5F8A"
+ },
+ {
+  "name": "mermaid tail",
+  "hex": "#00B4B1"
+ },
+ {
+  "name": "eggplant dream",
+  "hex": "#3D1A5E"
+ },
+ {
+  "name": "celery stick",
+  "hex": "#9BC17A"
+ },
+ {
+  "name": "cerulean afternoon",
+  "hex": "#4F9FC3"
+ },
+ {
+  "name": "pistachio cream",
+  "hex": "#C5E3B5"
+ },
+ {
+  "name": "purple haze",
+  "hex": "#7B4FA6"
+ },
+ {
+  "name": "swamp witch",
+  "hex": "#4A6741"
+ },
+ {
+  "name": "deep lagoon",
+  "hex": "#006994"
+ },
+ {
+  "name": "wisteria whisper",
+  "hex": "#C9A9D4"
+ },
+ {
+  "name": "pine needle",
+  "hex": "#2E5339"
+ },
+ {
+  "name": "icy blue raspberry",
+  "hex": "#5BC8E2"
+ },
+ {
+  "name": "chartreuse chaos",
+  "hex": "#AEEF00"
+ },
+ {
+  "name": "blueberry jam",
+  "hex": "#2E2B6B"
+ },
+ {
+  "name": "tropical teal",
+  "hex": "#00B5AD"
+ },
+ {
+  "name": "violet mist",
+  "hex": "#9B7EC8"
+ },
+ {
+  "name": "lily pad",
+  "hex": "#4E8951"
+ },
+ {
+  "name": "arctic blue",
+  "hex": "#B3D9F2"
+ },
+ {
+  "name": "dark enchantment",
+  "hex": "#2D0057"
+ },
+ {
+  "name": "honeydew drop",
+  "hex": "#D6F5D6"
+ },
+ {
+  "name": "cobalt crush",
+  "hex": "#1C3F87"
+ },
+ {
+  "name": "seafoam soda",
+  "hex": "#98EAD0"
+ },
+ {
+  "name": "grape popsicle",
+  "hex": "#8B35AB"
+ },
+ {
+  "name": "rainforest floor",
+  "hex": "#3B5E2B"
+ },
+ {
+  "name": "powder blue baby",
+  "hex": "#B0D0E8"
+ },
+ {
+  "name": "amethyst cave",
+  "hex": "#5C3A8A"
+ },
+ {
+  "name": "neon algae",
+  "hex": "#57E964"
+ },
+ {
+  "name": "twilight indigo",
+  "hex": "#3C2A6B"
+ },
+ {
+  "name": "peacock swagger",
+  "hex": "#006B6B"
+ },
+ {
+  "name": "iris petal",
+  "hex": "#8B7AC2"
+ },
+ {
+  "name": "mossy stone",
+  "hex": "#5A7247"
+ },
+ {
+  "name": "blue moon",
+  "hex": "#4169B0"
+ },
+ {
+  "name": "magic mushroom purple",
+  "hex": "#9B4DCA"
+ },
+ {
+  "name": "cucumber slice",
+  "hex": "#B5D99C"
+ },
+ {
+  "name": "midnight teal",
+  "hex": "#004D5C"
+ },
+ {
+  "name": "periwinkle dream",
+  "hex": "#CCCCFF"
+ },
+ {
+  "name": "emerald city",
+  "hex": "#008040"
+ },
+ {
+  "name": "steel blue whisper",
+  "hex": "#6B9BC3"
+ },
+ {
+  "name": "dark matter violet",
+  "hex": "#1E0035"
+ },
+ {
+  "name": "kiwi burst",
+  "hex": "#8ECC39"
+ },
+ {
+  "name": "ocean spray",
+  "hex": "#87CEDC"
+ },
+ {
+  "name": "plum pudding",
+  "hex": "#5D2E8C"
+ },
+ {
+  "name": "jade temple",
+  "hex": "#00A878"
+ },
+ {
+  "name": "denim crush",
+  "hex": "#1560BD"
+ },
+ {
+  "name": "lavender latte",
+  "hex": "#B8A9C9"
+ },
+ {
+  "name": "goblin green",
+  "hex": "#3E7B3E"
+ },
+ {
+  "name": "turquoise candy",
+  "hex": "#40E0D0"
+ },
+ {
+  "name": "cosmic grape",
+  "hex": "#6E2594"
+ },
+ {
+  "name": "sage advice",
+  "hex": "#8FAF7E"
+ },
+ {
+  "name": "deep dive blue",
+  "hex": "#005F73"
+ },
+ {
+  "name": "frosted lilac",
+  "hex": "#D8C5E8"
+ },
+ {
+  "name": "tangerine",
+  "hex": "#F28500"
+ },
+ {
+  "name": "burnt caramel",
+  "hex": "#A0522D"
+ },
+ {
+  "name": "toasted coconut",
+  "hex": "#7B5B3A"
+ },
+ {
+  "name": "honeydew mist",
+  "hex": "#E8F5E2"
+ },
+ {
+  "name": "antique gold",
+  "hex": "#C9A84C"
+ },
+ {
+  "name": "slate fog",
+  "hex": "#8A9BAE"
+ },
+ {
+  "name": "walnut shell",
+  "hex": "#5C4033"
+ },
+ {
+  "name": "pewter",
+  "hex": "#96A0A8"
+ },
+ {
+  "name": "pistachio",
+  "hex": "#B5C98E"
+ },
+ {
+  "name": "cinnamon stick",
+  "hex": "#9E4E2A"
+ },
+ {
+  "name": "polar ice",
+  "hex": "#D6EEF5"
+ },
+ {
+  "name": "bronze ember",
+  "hex": "#8C5A2B"
+ },
+ {
+  "name": "wisteria dream",
+  "hex": "#C3A8D1"
+ },
+ {
+  "name": "birch bark",
+  "hex": "#D4C5B0"
+ },
+ {
+  "name": "copper penny",
+  "hex": "#AD6F4A"
+ },
+ {
+  "name": "marshmallow",
+  "hex": "#F0EDE6"
+ },
+ {
+  "name": "deep espresso",
+  "hex": "#3B1F0F"
+ },
+ {
+  "name": "silver mist",
+  "hex": "#BFC9CA"
+ },
+ {
+  "name": "storm cloud",
+  "hex": "#6E7E8C"
+ },
+ {
+  "name": "moss velvet",
+  "hex": "#6B8E4E"
+ },
+ {
+  "name": "lemon curd",
+  "hex": "#F5E06A"
+ },
+ {
+  "name": "mushroom cap",
+  "hex": "#9E8F7C"
+ },
+ {
+  "name": "ocean foam",
+  "hex": "#B8EAE0"
+ },
+ {
+  "name": "dark chocolate",
+  "hex": "#4A2512"
+ },
+ {
+  "name": "steel blue",
+  "hex": "#6A8FAF"
+ },
+ {
+  "name": "lavender fog",
+  "hex": "#C4B8D9"
+ },
+ {
+  "name": "parchment",
+  "hex": "#E8DCC8"
+ },
+ {
+  "name": "jade whisper",
+  "hex": "#78B09A"
+ },
+ {
+  "name": "toffee crunch",
+  "hex": "#8B6242"
+ },
+ {
+  "name": "moonstone",
+  "hex": "#D9D4E7"
+ },
+ {
+  "name": "papaya sorbet",
+  "hex": "#FF9966"
+ },
+ {
+  "name": "driftwood",
+  "hex": "#8E7560"
+ },
+ {
+  "name": "fairy floss",
+  "hex": "#F7C5D5"
+ },
+ {
+  "name": "ink blot",
+  "hex": "#1E2033"
+ },
+ {
+  "name": "warm sand",
+  "hex": "#D4B896"
+ },
+ {
+  "name": "stardust",
+  "hex": "#C8C4D8"
+ },
+ {
+  "name": "pomegranate seed",
+  "hex": "#B5253A"
+ },
+ {
+  "name": "celadon mist",
+  "hex": "#ACE1C4"
+ },
+ {
+  "name": "urban concrete",
+  "hex": "#A0998E"
+ },
+ {
+  "name": "plum dusk",
+  "hex": "#7B4B6E"
+ },
+ {
+  "name": "raw umber",
+  "hex": "#7A5230"
+ },
+ {
+  "name": "glacier blue",
+  "hex": "#A8C8D8"
+ },
+ {
+  "name": "faded denim",
+  "hex": "#7A96B0"
+ },
+ {
+  "name": "champagne bubble",
+  "hex": "#F0DCA0"
+ },
+ {
+  "name": "truffle",
+  "hex": "#6A5048"
+ },
+ {
+  "name": "mint julep",
+  "hex": "#A8E0C0"
+ },
+ {
+  "name": "merlot shadow",
+  "hex": "#5C1F2E"
+ },
+ {
+  "name": "oat milk",
+  "hex": "#E8D8C0"
+ },
+ {
+  "name": "twilight mauve",
+  "hex": "#9B7B9A"
+ },
+ {
+  "name": "tiger eye",
+  "hex": "#B87333"
+ },
+ {
+  "name": "powder blue",
+  "hex": "#B0D0E8"
+ },
+ {
+  "name": "fig jam",
+  "hex": "#7A3B5A"
+ },
+ {
+  "name": "hazelnut latte",
+  "hex": "#C49A6C"
+ },
+ {
+  "name": "cloud nine",
+  "hex": "#E8EEF5"
+ },
+ {
+  "name": "aged brass",
+  "hex": "#B5A050"
+ },
+ {
+  "name": "soft charcoal",
+  "hex": "#5A5A5F"
+ },
+ {
+  "name": "grape soda",
+  "hex": "#6A4A8C"
+ },
+ {
+  "name": "beeswax",
+  "hex": "#E8C87A"
+ }
+]

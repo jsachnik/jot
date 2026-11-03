@@ -4,5 +4,14 @@ __pycache__/
 *.pyc
 jot_data/
 .DS_Store
+sticker_banks/.cache/
+sticker_banks/_v1_old/
+sticker_banks/run.log
 static/_prev.html
+sticker_gallery*.html
+sticker_banks/REVIEW.md
 *.log
+# personal experiment scripts (Method 2/3 trials), not part of the app
+tools/method2_stickers.py
+tools/method3_stickers.py
+tools/METHOD2_NOTES.md
