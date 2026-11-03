@@ -7,6 +7,10 @@ Jot runs **on your own computer**, in your browser. Your ideas are stored in one
 folder (`jot_data`) and go nowhere. It works completely **offline**; an AI is an
 optional extra.
 
+![Jot home screen: write an idea, pick its groups, give updates](docs/home.png)
+
+![Jot map: ideas as a network, coloured by group, with arrows showing which idea led to which](docs/map.png)
+
 ## What it does
 
 - **Jot It Down.** Type a few words, tick the groups it belongs to, press the
