@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-mode="light" data-palette="ocean">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jot</title>
+<link rel="icon" type="image/png" href="/static/icon.png">
+<script>
+  /* apply the saved theme before first paint so there is no flash */
+  (function () {
+    try {
+      var m = localStorage.getItem('jot.mode') || 'auto', p = localStorage.getItem('jot.palette') || 'ocean';
+      if (m === 'auto') m = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.mode = m; document.documentElement.dataset.palette = p;
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="logo"><i></i><span id="appname">Jot</span></div>
+  <nav id="nav" aria-label="Main"></nav>
+  <div class="hdr-right">
+    <span class="pill" id="pts" title="Your points"></span>
+    <button class="icon-btn" id="libbtn" aria-expanded="false">Librarian</button>
+  </div>
+</header>
+<div id="app">
+  <aside id="librarian" aria-label="Librarian"></aside>
+  <main id="view"></main>
+  <aside id="sidebar" aria-label="Idea details"><div class="inner"></div></aside>
+</div>
+<div id="toasts" role="status" aria-live="polite"></div>
+<script src="/static/config.js"></script>
+<script src="/static/util.js"></script>
+<script src="/static/state.js"></script>
+<script src="/static/groupui.js"></script>
+<script src="/static/sidebar.js"></script>
+<script src="/static/update.js"></script>
+<script src="/static/home.js"></script>
+<script src="/static/map.js"></script>
+<script src="/static/timeline.js"></script>
+<script src="/static/librarian.js"></script>
+<script src="/static/settings.js"></script>
+<script src="/static/main.js"></script>
+</body>
+</html>
